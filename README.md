@@ -1,1 +1,1 @@
-# EduWisata
+# LensaWisata
