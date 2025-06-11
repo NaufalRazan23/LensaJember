@@ -1,1 +1,1 @@
-# LensaWisata
+# LensaJember
