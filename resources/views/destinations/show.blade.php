@@ -21,7 +21,8 @@
                 <div class="relative h-96">
                     <img src="{{ asset('storage/' . $destination->featured_image) }}"
                          alt="{{ $destination->name }}"
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover"
+                         onerror="this.onerror=null; this.src='{{ asset('images/placeholder-destination.jpg') }}'; this.alt='Gambar tidak tersedia';">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
                         <div class="flex items-center justify-between">
@@ -103,7 +104,7 @@
                         <h2 class="text-xl font-semibold text-gray-900 mb-4">Location</h2>
                         <div class="bg-gray-50 rounded-xl p-6">
                             <p class="flex items-start text-gray-600">
-                                <svg class="w-6 h-6 mr-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-4 h-4 mr-3 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -140,7 +141,8 @@
                                 <div class="aspect-w-16 aspect-h-12 group">
                                     <img src="{{ asset('storage/' . $image) }}"
                                          alt="Gallery image of {{ $destination->name }}"
-                                         class="w-full h-full object-cover rounded-xl transition duration-300 group-hover:opacity-90">
+                                         class="w-full h-full object-cover rounded-xl transition duration-300 group-hover:opacity-90"
+                                         onerror="this.onerror=null; this.src='{{ asset('images/placeholder-gallery.jpg') }}'; this.alt='Gambar tidak tersedia';">
                                 </div>
                             @endforeach
                         </div>
@@ -164,23 +166,25 @@
             </div>
         </div>
 
-        <!-- Edit and Back Buttons -->
+        <!-- Back Button -->
         <div class="flex justify-between items-center mb-8">
             <a href="{{ route('destinations.index') }}"
                class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                 </svg>
-                Back to Destinations
+                Kembali ke Wisata
             </a>
-            <a href="{{ route('destinations.edit', $destination) }}"
-               class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-                </svg>
-                Edit Destination
-            </a>
+            @if(auth()->user()->isAdmin())
+                <a href="{{ route('admin.wisata.edit', $destination) }}"
+                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                    </svg>
+                    Edit Wisata
+                </a>
+            @endif
         </div>
     </div>
 @endsection

@@ -1,1 +1,1 @@
-# LensaJember
+# ExploreJember

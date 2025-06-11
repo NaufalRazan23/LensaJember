@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to Lensa Jember')
+@section('title', 'Welcome to Explore Jember')
 
 @section('content')
     <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-        <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Lensa Jember</h1>
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Explore Jember</h1>
         <p class="text-gray-600 text-lg mb-6">Discover the hidden gems and beautiful destinations of Jember, East Java.</p>
         <a href="{{ route('destinations.index') }}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
             Explore Destinations

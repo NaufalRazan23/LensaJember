@@ -8,16 +8,18 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Explore Destinations</h1>
-                    <p class="text-white/90">Discover amazing places in Jember</p>
+                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Jelajahi Wisata</h1>
+                    <p class="text-white/90">Temukan tempat-tempat menakjubkan di Jember</p>
                 </div>
-                <a href="{{ route('destinations.create') }}"
-                   class="inline-flex items-center px-6 py-3 rounded-lg bg-white text-blue-600 hover:bg-blue-50 transition-all duration-200 font-semibold shadow-md hover:shadow-xl transform hover:-translate-y-0.5">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                    </svg>
-                    Add New Destination
-                </a>
+                @if(auth()->user()->isAdmin())
+                    <a href="{{ route('admin.wisata.create') }}"
+                       class="inline-flex items-center px-6 py-3 rounded-lg bg-white text-blue-600 hover:bg-blue-50 transition-all duration-200 font-semibold shadow-md hover:shadow-xl transform hover:-translate-y-0.5">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                        Tambah Wisata Baru
+                    </a>
+                @endif
             </div>
         </div>
         <div class="absolute bottom-0 left-0 right-0 h-16" style="background: linear-gradient(to right bottom, transparent 49%, white 50%)"></div>
@@ -63,7 +65,7 @@
                     <div class="flex items-center justify-between">
                         <a href="{{ route('destinations.show', $destination) }}"
                            class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">
-                            <span>View Details</span>
+                            <span>Lihat Detail</span>
                             <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                             </svg>
@@ -92,8 +94,8 @@
                           d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
             </div>
-            <h3 class="text-lg font-medium text-gray-900 mb-2">No destinations found</h3>
-            <p class="text-gray-600">We couldn't find any destinations matching your criteria.</p>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">Tidak ada wisata ditemukan</h3>
+            <p class="text-gray-600">Kami tidak dapat menemukan wisata yang sesuai dengan kriteria Anda.</p>
         </div>
     @endif
 @endsection

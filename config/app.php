@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Lensa Jember'),
+    'name' => env('APP_NAME', 'Explore Jember'),
 
     /*
     |--------------------------------------------------------------------------

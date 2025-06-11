@@ -5,7 +5,7 @@
 @section('content')
 <div class="max-w-6xl mx-auto">
     <div class="mb-6">
-        <a href="{{ route('categories.index') }}" class="text-blue-600 hover:text-blue-800">&larr; Back to Categories</a>
+        <a href="{{ route('categories.index') }}" class="text-blue-600 hover:text-blue-800">&larr; Kembali ke Kategori</a>
     </div>
 
     <div class="card mb-6">
@@ -17,20 +17,22 @@
                 @endif
             </div>
             <p class="text-gray-600 text-lg mb-4">{{ $category->description }}</p>
-            <div class="flex space-x-4">
-                <a href="{{ route('categories.edit', $category) }}" class="btn-primary">Edit Category</a>
-                <form action="{{ route('categories.destroy', $category) }}" method="POST" class="inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn-secondary" onclick="return confirm('Are you sure you want to delete this category?')">
-                        Delete Category
-                    </button>
-                </form>
-            </div>
+            @if(auth()->user()->isAdmin())
+                <div class="flex space-x-4">
+                    <a href="{{ route('admin.wisata.edit', $category) }}" class="btn-primary">Edit Kategori</a>
+                    <form action="{{ route('admin.wisata.destroy', $category) }}" method="POST" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn-secondary" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">
+                            Hapus Kategori
+                        </button>
+                    </form>
+                </div>
+            @endif
         </div>
     </div>
 
-    <h2 class="text-2xl font-bold text-gray-800 mb-6">Destinations in {{ $category->name }}</h2>
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Wisata di {{ $category->name }}</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($destinations as $destination)
